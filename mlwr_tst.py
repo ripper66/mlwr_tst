@@ -1,7 +1,9 @@
 # Requirements: Python3
 # This script will run a HTTP Request, please use Python 3 to run it.
+# Date of Change: 13 Jan 2023
 
-import urllib.request
+import requests
+
 
 print("""\
 ______  ___      ______                                  ________           _____ 
@@ -17,20 +19,10 @@ This script is for Malware Simulation Test...
 Running in background...
                     """)
 
-# This is example syntax...
-#urllib.request.urlopen("https://www.google.com").read()
-# List of malicious URLs
+urls = ["http://malware.wicar.org/data/eicar.com", "http://malware.wicar.org/data/ms14_064_ole_xp.html", "http://malware.wicar.org/data/ms14_064_ole_not_xp.html", "http://malware.wicar.org/data/java_jre17_exec.html", "http://malware.wicar.org/data/ms03_020_ie_objecttype.html", "http://malware.wicar.org/data/ms05_054_onload.html", "http://malware.wicar.org/data/ms09_002_memory_corruption.html", "http://malware.wicar.org/data/ms09_072_style_object.html", "http://malware.wicar.org/data/ms10_090_ie_css_clip_ie6.html", "http://malware.wicar.org/data/firefox_proto_crmfrequest.html", "http://malware.wicar.org/data/vlc_amv.html", "http://malware.wicar.org/data/adobe_flash_hacking_team_uaf.html"] 
 
-urllib.request.urlopen("http://malware.wicar.org/data/eicar.com").read()
-urllib.request.urlopen("http://malware.wicar.org/data/ms14_064_ole_xp.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/ms14_064_ole_not_xp.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/java_jre17_exec.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/ms03_020_ie_objecttype.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/ms05_054_onload.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/ms09_002_memory_corruption.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/ms09_072_style_object.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/ms10_090_ie_css_clip_ie6.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/firefox_proto_crmfrequest.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/vlc_amv.html").read()
-urllib.request.urlopen("http://malware.wicar.org/data/adobe_flash_hacking_team_uaf.html").read()
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'}
 
+for url in urls:
+    response = requests.get(url, headers=headers)
+    print(f'{url} - {response.status_code}')
